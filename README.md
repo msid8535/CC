@@ -1,10 +1,5 @@
 # kylie-lab12-group05
 
-Contributors:
-- Andy Dosan
-- Can Karabacak
-- Josh Berman
-- Mohsin Siddiqui
 
 # Version Information
 - Java version: 17

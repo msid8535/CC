@@ -1,6 +1,3 @@
-# kylie-lab12-group05
-
-
 # Version Information
 - Java version: 17
 - Gradle version: 8.10

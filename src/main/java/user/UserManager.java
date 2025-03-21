@@ -72,25 +72,6 @@ public class UserManager {
         return null; // User not found or invalid credentials
     }
 
-    // Get all users from the database
-//    public ArrayList<User> getAllUsers() {
-//        ArrayList<User> users = new ArrayList<>();
-//        String sql = "SELECT * FROM users";
-//
-//        try (Statement stmt = connection.createStatement();
-//             ResultSet rs = stmt.executeQuery(sql)) {
-//            while (rs.next()) {
-//                String username = rs.getString("username");
-//                String password = rs.getString("password");
-//                boolean isAdmin = rs.getInt("isAdmin") == 1;
-//                users.add(isAdmin ? new AdminUser(username, password) : new NormalUser(username, password));
-//            }
-//        } catch (SQLException e) {
-//            System.out.println(e.getMessage());
-//        }
-//        return users;
-//    }
-
     // Close the database connection
     public void closeConnection() {
         try {

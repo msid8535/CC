@@ -13,40 +13,6 @@ public class CurrencyManager {
     private Connection connection;
     private static List<String> topCurrencies = new ArrayList<>();
 
-    // Mohsin's HashMap for rates
-    // private HashMap<String, CurrencyRate> rates = new HashMap<>();
-
-    // Mohsin's functions
-    // public void addCurrency(Currency currency) {
-    // currencies.put(currency.getCode(), currency);
-    // }
-    //
-    // public void addRate(Currency baseCurrency, Currency targetCurrency, Float
-    // rate) {
-    // String key = generateKey(baseCurrency, targetCurrency);
-    // CurrencyRate currencyRate = new CurrencyRate(baseCurrency, targetCurrency,
-    // rate, LocalDate.now());
-    // rates.put(key, currencyRate);
-    // }
-    //
-    // public void editRate(Currency baseCurrency, Currency targetCurrency, Float
-    // rate) {
-    // String key = generateKey(baseCurrency, targetCurrency);
-    // if (rates.containsKey(key)) {
-    // CurrencyRate updatedRate = new CurrencyRate(baseCurrency, targetCurrency,
-    // rate, LocalDate.now());
-    // rates.put(key, updatedRate);
-    // } else {
-    // System.out.println("Rate for this currency pair does not exist. Use addRate
-    // instead.");
-    // }
-    // }
-    //
-    // public CurrencyRate getRate(Currency baseCurrency, Currency targetCurrency) {
-    // String key = generateKey(baseCurrency, targetCurrency);
-    // return rates.get(key);
-    // }
-
     public CurrencyManager() {
         // Initialize SQLite connection
         try {
@@ -179,25 +145,6 @@ public class CurrencyManager {
         return ratesChange;
     }
 
-    // Get the most popular currency pairs by count
-//    public HashMap<String, Float> getMostPopularRates() {
-//        HashMap<String, Float> popularRates = new HashMap<>();
-//        String sql = "SELECT currency1, currency2, rate FROM rates WHERE count > 0 ORDER BY count DESC LIMIT 5";
-//
-//        try (Statement stmt = connection.createStatement();
-//             ResultSet rs = stmt.executeQuery(sql)) {
-//            while (rs.next()) {
-//                String key = rs.getString("currency1") + "/" + rs.getString("currency2");
-//                float rate = rs.getFloat("rate");
-//                popularRates.put(key, rate);
-//            }
-//        } catch (SQLException e) {
-//            System.out.println(e.getMessage());
-//        }
-//
-//        return popularRates;
-//    }
-
     // set list of top 4 currencies
     public void setCommonCurrencies(List<String> commonCurrencies) {
         topCurrencies = commonCurrencies;
@@ -240,11 +187,4 @@ public class CurrencyManager {
 
         return historicalRates;
     }
-    // public HashMap<String, CurrencyRate> getRates() {
-    // return rates;
-    // }
-
-    // private String generateKey(Currency baseCurrency, Currency targetCurrency) {
-    // return baseCurrency.getCode() + "_" + targetCurrency.getCode();
-    // }
 }

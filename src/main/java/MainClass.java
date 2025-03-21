@@ -45,78 +45,6 @@ public class MainClass {
         }
     }
 
-    public static void loadData() {
-
-        // Mohsin's code
-        /*
-         * CurrencyManager currencyManager = new CurrencyManager();
-         *
-         * // this will need to be altered based on how we use the data and store it
-         * // we keep this in if we want to store all the data in program
-         *
-         * try {
-         * //TODO
-         * // NOTE: this won't work atm until we set up the database, afterwards edit
-         * these 3 String variables
-         * String url = "jdbc:mysql://localhost:3306/mydatabase"; // URL of your
-         * database, currently just filler text
-         * String username = "root"; // Database username
-         * String password = "password"; // Database password
-         * //name
-         * Connection connection = null;
-         * connection = DriverManager.getConnection(url, username, password);
-         * // get currencies
-         * Statement cstatement = null;
-         * ResultSet resultCurrencies = null;
-         * // setting the sql query
-         * String currencies = "SELECT NAME, CODE, SYMBOL FROM CURRENCIES";
-         * // executing the query and now resultCurrencies contains a pointer to the
-         * first row in currencies table
-         * resultCurrencies = cstatement.executeQuery(currencies);
-         * // making sure cursor is to first row
-         * resultCurrencies.beforeFirst();
-         * // this adds all rows in currency table as new currencies in the hashmap
-         * currencies of the currencyManager
-         * HashMap<String, Currency> find = new HashMap<String, Currency>; //hashmap to
-         * use for adding rates
-         * while (resultCurrencies.next()) {
-         * String name = resultCurrencies.getString("Name");
-         * String symbol = resultCurrencies.getString("Symbol");
-         * String code = resultCurrencies.getString("code");
-         * Currency newcurrency = new Currency(name, code, symbol);
-         * currencyManager.addCurrency(newcurrency);
-         * find.put(name, newcurrency);
-         * }
-         *
-         * // get rates
-         *
-         * Statement rstatement = null;
-         * ResultSet resultRates = null;
-         * String rates = "SELECT BASECURRENCY, TARGETCURRENCY, TRATE FROM CURRENCIES";
-         * // executing the query and now resultRates points to first row in rates table
-         * resultRates = rstatement.executeQuery(rates);
-         *
-         * resultRates.beforeFirst();
-         *
-         * while (resultRates.next()) { // this adds all rows in rates table as new
-         * rates in the hashmap rates of the CurrencyManager
-         * String baseCurrency = resultRates.getString("BASECURRENCY");
-         * String targetCurrency = resultRates.getString("TARGETCURRENCY");
-         * Currency basec = find.get(baseCurrency);
-         * Currency targetc = find.get(targetCurrency);
-         * float tRate = resultRates.getFloat("TRATE");
-         * currencyManager.addRate(basec, targetc, tRate);
-         * }
-         *
-         * } catch (SQLException e) {
-         * e.printStackTrace();
-         * } finally {
-         * //closeProgram();
-         * ;
-         * }
-         */
-    }
-
     // Method for user login
     public static void login(Scanner scanner) {
         System.out.print("Enter username: ");
@@ -128,9 +56,7 @@ public class MainClass {
         if (user != null) {
             System.out.println("Login successful! Welcome, " + user.getUsername() + "!");
             appManager.setCurrentUser(user);
-
-            // Displaying available currencies on login - can delete if we want i think its
-            // a useful touch
+            
             displayAvailableCurrenciesLogin();
 
             mainMenu();
@@ -327,9 +253,6 @@ public class MainClass {
         System.out.print("Enter currency symbol: ");
         String symbol = scanner.nextLine();
 
-        // todo: check if currency is already in database
-
-        // todo: loop through every currently existing currency, and make admin input
         // exchange rate to each existing currency
 
         if (appManager.checkCurrency(name)) {
@@ -466,14 +389,6 @@ public class MainClass {
 
         System.out.println("\nMost Popular Currency Pairs:");
         System.out.println("------------------------------");
-        //displayCommonCurrencies();
-
-        //Query the rates table for the most popular currency pairs
-        //HashMap<String, Float> popularRates = currencyManager.getMostPopularRates();
-
-        //for (Map.Entry<String, Float> entry : popularRates.entrySet()) {
-        //    System.out.println("Currency Pair: " + entry.getKey() + " | Exchange Rate: " + entry.getValue());
-        //}
 
         String C1 = use.get(0); // 1st most common currency
         String C2 = use.get(1); // 2nd
